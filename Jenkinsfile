@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages {
+        stage('Verificar Diretório') {
+            steps {
+                sh 'ls -la'
+            }
+        }
         stage('Checkout Código') {
             steps {
                 git 'https://github.com/damiao-git/estudo-java-angular-cicd'
