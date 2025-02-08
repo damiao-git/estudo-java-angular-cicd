@@ -11,6 +11,7 @@ pipeline {
             steps {
                 git 'https://github.com/damiao-git/estudo-java-angular-cicd'
             }
+            
         }
         stage('Instalar Dependências') {
             steps {
