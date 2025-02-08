@@ -1,8 +1,10 @@
 pipeline{
     agent any 
-    stages('Inicial'){
-        steps{
-            echo 'Iniciando o jenkins'
+    stages{
+        stage('Inicial'){
+            steps{
+                echo 'Iniciando o jenkins'
+            }
         }
     }
 }
