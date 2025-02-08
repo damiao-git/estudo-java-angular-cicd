@@ -2,35 +2,42 @@ pipeline {
     agent any
 
     stages {
-        stage('Verificar Diretório') {
-            steps {
-                sh 'ls -la'
-            }
-        }
         stage('Checkout Código') {
             steps {
                 git 'https://github.com/damiao-git/estudo-java-angular-cicd'
             }
-            
+        }
+        stage('Verificar Diretório') {
+            steps {
+                bat 'dir'
+            }
         }
         stage('Instalar Dependências') {
             steps {
-                sh 'cd backend && ./gradlew dependencies' 
+                dir('backend') {
+                    bat 'gradlew.bat dependencies'
+                }
             }
         }
         stage('Compilar Código') {
             steps {
-                sh 'cd backend && ./gradlew build'
+                dir('backend') {
+                    bat 'gradlew.bat build'
+                }
             }
         }
         stage('Rodar Testes') {
             steps {
-                sh 'cd backend && ./gradlew test' 
+                dir('backend') {
+                    bat 'gradlew.bat test'
+                }
             }
         }
         stage('Gerar Artefato') {
             steps {
-                sh 'cd backend && ./gradlew assemble'
+                dir('backend') {
+                    bat 'gradlew.bat assemble'
+                }
             }
         }
     }
